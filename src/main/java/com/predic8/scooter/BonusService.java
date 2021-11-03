@@ -12,7 +12,6 @@ public class BonusService {
     @Autowired
     KundenRepository kundenRepo;
 
-
     public void addBonusForUser(String kundenId) {
         Optional<Kunde> kunde = kundenRepo.findById(kundenId);
 

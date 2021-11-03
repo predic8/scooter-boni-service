@@ -16,7 +16,7 @@ public class BonusAPI {
 
     @GetMapping("/user/{id}/bonus")
     public ResponseEntity<Integer> getBonusPointsForUser(@PathVariable String id){
-        return ok(bonusService.getcurrentBonus(id));
+        return null;
     }
 
 }

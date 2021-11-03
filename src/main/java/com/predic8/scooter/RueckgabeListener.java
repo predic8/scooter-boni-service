@@ -18,16 +18,10 @@ public class RueckgabeListener {
     private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Autowired
-    ObjectMapper om;
-
-    @Autowired
     BonusService bonusService;
 
     @KafkaListener(topics = "scooter.rueckgabe")
     public void rueckgabeListener(String rueckgabe) throws JsonProcessingException {
-        RueckgabeDTO rueckgabeDTO = om.readValue(rueckgabe, RueckgabeDTO.class);
-        log.info("Scooter " + rueckgabeDTO.getScooterId() + " wurde zurückgegeben.");
-
-        bonusService.addBonusForUser(rueckgabeDTO.getUserId());
+        // Bonus für den Benutzer berechnen und speichern.
     }
 }
