@@ -20,8 +20,12 @@ public class RueckgabeListener {
     @Autowired
     BonusService bonusService;
 
+    @Autowired
+    ObjectMapper om;
+
     @KafkaListener(topics = "scooter.rueckgabe")
     public void rueckgabeListener(String rueckgabe) throws JsonProcessingException {
-        // Bonus für den Benutzer berechnen und speichern.
+        RueckgabeDTO rueckgabeDTO = om.readValue(rueckgabe,RueckgabeDTO.class);
+        bonusService.addBonusForUser(rueckgabeDTO.getUserId());
     }
 }
