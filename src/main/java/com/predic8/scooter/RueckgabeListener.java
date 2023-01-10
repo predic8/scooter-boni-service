@@ -25,7 +25,6 @@ public class RueckgabeListener {
 
     @KafkaListener(topics = "scooter.rueckgabe")
     public void rueckgabeListener(String rueckgabe) throws JsonProcessingException {
-        RueckgabeDTO rueckgabeDTO = om.readValue(rueckgabe,RueckgabeDTO.class);
-        bonusService.addBonusForUser(rueckgabeDTO.getUserId());
+        // Code goes here.
     }
 }
